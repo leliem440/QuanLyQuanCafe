@@ -95,7 +95,7 @@ namespace QuanLyQuanCafe.DAO
                         }
                     }
                 }
-                data = command.ExecuteScalar();
+                data = command.ExecuteNonQuery();
                 connection.Close();
 
             }
