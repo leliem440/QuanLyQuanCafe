@@ -143,10 +143,10 @@ INSERT dbo.Food
 VALUES	( N'Cơm chiên mushi', 4, 999999) 
 INSERT dbo.Food
 		(name, idCategory, price)
-VALUES	( N'7Up', 5, 150000)
+VALUES	( N'7Up', 5, 15000)
 INSERT dbo.Food
 		(name, idCategory, price)
-VALUES	( N'Cafe', 5, 120000) 
+VALUES	( N'Cafe', 5, 12000) 
 
 --thêm bill
 INSERT dbo.Bill
@@ -157,7 +157,7 @@ INSERT dbo.Bill
 		)
 VALUES	( GETDATE() , 
 		  NULL,
-		  3 ,
+		  1 ,
 		  0
 		)
 
@@ -169,7 +169,7 @@ INSERT dbo.Bill
 		)
 VALUES	( GETDATE() , 
 		  NULL,
-		  4 ,
+		  2 ,
 		  0
 		)
 
@@ -181,7 +181,7 @@ INSERT dbo.Bill
 		)
 VALUES	( GETDATE() , 
 		  GETDATE(),
-		  5 ,
+		  3 ,
 		  1
 		)
 
@@ -189,50 +189,120 @@ VALUES	( GETDATE() ,
 --THÊM BILL INFO---
 INSERT dbo.BillInfo
 		( idBill, idFood, count)
-VALUES	( 5,
+VALUES	( 1,
 		  1,
 		  2
 		)
 INSERT dbo.BillInfo
 		( idBill, idFood, count)
-VALUES	( 5,
+VALUES	( 1,
 		  3,
 		  4
 		)
 INSERT dbo.BillInfo
 		( idBill, idFood, count)
-VALUES	( 5,
+VALUES	( 1,
 		  5,
 		  1
 		)
 INSERT dbo.BillInfo
 		( idBill, idFood, count)
-VALUES	( 5,
+VALUES	( 2,
 		  1,
 		  2
 		)
 INSERT dbo.BillInfo
 		( idBill, idFood, count)
-VALUES	( 5,
+VALUES	( 2,
 		  6,
 		  2
 		)
 INSERT dbo.BillInfo
 		( idBill, idFood, count)
-VALUES	( 7,
+VALUES	( 3,
 		  5,
 		  2
 		)
 GO
 
+CREATE PROC USP_InsertBill
+@idTable INT
+AS
+BEGIN
+INSERT dbo.Bill
+          ( DateCheckIn ,
+		DateCheckOut,
+		idTable,
+		status
+		)
+VALUES	( GETDATE() , 
+		  NULL,
+		  @idTable ,
+		  0
+		)
+END
+GO
+
+
+CREATE PROC USP_InsertBillInfo
+@idBill INT, @idFood INT, @count INT
+AS
+BEGIN 
+	  INSERT dbo.BillInfo
+		( idBill, idFood, count)
+VALUES	( @idBill,
+		  @idFood,
+		  @count
+		)
+		
+END
+GO
+
+ALTER PROC USP_InsertBillInfo
+@idBill INT, @idFood INT, @count INT
+AS
+BEGIN 
+      DECLARE @isExitsBillInfo INT
+	  DECLARE @foodCount INT = 1
+
+	  SELECT @isExitsBillInfo = id, @foodCount = b.count 
+	  FROM dbo.BillInfo AS b 
+	  WHERE idBill = @idBill AND idFood = @idFood
+
+	  IF (@isExitsBillInfo > 0)
+	  BEGIN
+	       DECLARE @newCount INT = @foodCount + @count
+	       IF(@newCount > 0)
+	           UPDATE dbo.BillInfo SET count = @foodCount + @count WHERE idFood =@idFood 
+	       ELSE 
+	           DELETE dbo.BillInfo WHERE idBill = @idBill AND idFood = @idFood
+	  END
+	  ELSE
+	  BEGIN
+	       INSERT dbo.BillInfo
+		   ( idBill, idFood, count)
+           VALUES	( @idBill,
+		            @idFood,
+		            @count
+		            )
+	  END
+END
+GO
+
+
+
+SELECT MAX(id) FROM dbo.Bill
+
 SELECT f.name, bi.count, f.price, f.price*bi.count AS totalPrice FROM dbo.BillInfo AS bi, dbo.Bill AS b, dbo.Food AS f
-WHERE bi.idBill = b.id AND bi.idFood = f.id AND b.idTable = 3
+WHERE bi.idBill = b.id AND bi.idFood = f.id AND b.idTable = 1
 
 
 SELECT * FROM dbo.Bill
 SELECT * FROM dbo.BillInfo
 SELECT * FROM dbo.Food
 SELECT * FROM dbo.FoodCategory
+
+SELECT * FROM dbo.Food
 
 
 
