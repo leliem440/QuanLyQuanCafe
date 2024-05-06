@@ -304,10 +304,37 @@ SELECT * FROM dbo.FoodCategory
 
 SELECT * FROM dbo.Food
 
+UPDATE dbo.Bill SET status = 1 WHERE id = 1
 
+CREATE TRIGGER UTG_UpdateBillInfo
+ON dbo.BillInfo FOR INSERT , UPDATE
+AS
+BEGIN
+     DECLARE @idBill INT
+	 SELECT @idBill = idBill FROM inserted
+	 DECLARE @idTable INT
+	 SELECT @idTable = idTable FROM dbo.Bill WHERE id = @idBill AND status = 0
+	 UPDATE dbo.TableFood SET status = N'Có người' WHERE id = @idTable
+END
+GO
 
+CREATE TRIGGER UTG_UpdateBill
+ON dbo.Bill FOR UPDATE
+AS
+BEGIN
+     DECLARE @idBill INT
+	 SELECT @idBill = id FROM inserted
+	 DECLARE @idTable INT
+	 SELECT @idTable = idTable FROM dbo.Bill WHERE id = @idBill
+	 DECLARE @count int = 0
+	 SELECT @count = COUNT(*) FROM dbo.Bill WHERE idTable = @idTable AND status = 0
+	 IF(@count = 0)
+	   UPDATE dbo.TableFood SET status = N'Trống' WHERE id = @idTable
+END
+GO
 
-
+DELETE dbo.BillInfo
+DELETE dbo.Bill
 
 
 
