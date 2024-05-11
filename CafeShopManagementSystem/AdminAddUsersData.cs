@@ -11,13 +11,16 @@ namespace CafeShopManagementSystem
 {
     internal class AdminAddUsersData
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Nitro\Documents\Cafe.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True");
+        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True");
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
         public string Status { get; set; }
+        public string Image {  get; set; }
         public string DateRegistered { get; set; }
+
+
         public List<AdminAddUsersData> usersListData()
         {
             List<AdminAddUsersData> listData = new List<AdminAddUsersData>();
@@ -38,6 +41,7 @@ namespace CafeShopManagementSystem
                             usersData.Password = reader["password"].ToString();
                             usersData.Role = reader["role"].ToString();
                             usersData.Status = reader["status"].ToString();
+                            usersData.Image = reader["profile_image"].ToString();
                             usersData.DateRegistered = reader["date_reg"].ToString();
 
                             listData.Add(usersData);

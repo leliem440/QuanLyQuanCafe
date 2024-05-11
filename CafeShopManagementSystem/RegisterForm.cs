@@ -13,7 +13,7 @@ namespace CafeShopManagementSystem
 {
     public partial class RegisterForm : Form
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Nitro\Documents\Cafe.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True");
         public RegisterForm()
         {
             InitializeComponent();
@@ -116,11 +116,6 @@ namespace CafeShopManagementSystem
                
                 
             }
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

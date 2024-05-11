@@ -80,9 +80,9 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Location = new System.Drawing.Point(14, 25);
+            this.panel1.Location = new System.Drawing.Point(29, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1221, 234);
+            this.panel1.Size = new System.Drawing.Size(1206, 234);
             this.panel1.TabIndex = 0;
             // 
             // panel6
@@ -352,9 +352,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(14, 276);
+            this.panel2.Location = new System.Drawing.Point(29, 276);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1221, 466);
+            this.panel2.Size = new System.Drawing.Size(1206, 466);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
