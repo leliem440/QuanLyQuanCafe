@@ -12,8 +12,10 @@ using System.Data.SqlClient;
 namespace CafeShopManagementSystem
 {
     public partial class Form1 : Form
+
     {
-        SqlConnection connect = new  SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True");
+        public static string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True";
+        SqlConnection connect = new  SqlConnection(conn);
 
         public Form1()
         {

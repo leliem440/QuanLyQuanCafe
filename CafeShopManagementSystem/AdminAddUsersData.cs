@@ -12,7 +12,7 @@ namespace CafeShopManagementSystem
 {
     internal class AdminAddUsersData
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True");
+        SqlConnection connect = new SqlConnection(Form1.conn);
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }

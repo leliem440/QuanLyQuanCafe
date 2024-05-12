@@ -14,7 +14,7 @@ namespace CafeShopManagementSystem
 {
     public partial class AdminAddUsers : UserControl
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True");
+        SqlConnection connect = new SqlConnection(Form1.conn);
         public AdminAddUsers()
         {
             InitializeComponent();

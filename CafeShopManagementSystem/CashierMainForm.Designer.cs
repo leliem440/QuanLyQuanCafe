@@ -43,9 +43,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.cashierOrderForm1 = new CafeShopManagementSystem.CashierOrderForm();
             this.adminAddProducts1 = new CafeShopManagementSystem.AdminAddProducts();
             this.aminDashboardForm1 = new CafeShopManagementSystem.AminDashboardForm();
-            this.cashierOrderForm1 = new CafeShopManagementSystem.CashierOrderForm();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -236,6 +236,13 @@
             this.panel4.Size = new System.Drawing.Size(1229, 732);
             this.panel4.TabIndex = 0;
             // 
+            // cashierOrderForm1
+            // 
+            this.cashierOrderForm1.Location = new System.Drawing.Point(-7, 0);
+            this.cashierOrderForm1.Name = "cashierOrderForm1";
+            this.cashierOrderForm1.Size = new System.Drawing.Size(1225, 732);
+            this.cashierOrderForm1.TabIndex = 2;
+            // 
             // adminAddProducts1
             // 
             this.adminAddProducts1.Location = new System.Drawing.Point(0, 0);
@@ -250,13 +257,6 @@
             this.aminDashboardForm1.Name = "aminDashboardForm1";
             this.aminDashboardForm1.Size = new System.Drawing.Size(1251, 745);
             this.aminDashboardForm1.TabIndex = 0;
-            // 
-            // cashierOrderForm1
-            // 
-            this.cashierOrderForm1.Location = new System.Drawing.Point(-12, 0);
-            this.cashierOrderForm1.Name = "cashierOrderForm1";
-            this.cashierOrderForm1.Size = new System.Drawing.Size(1241, 732);
-            this.cashierOrderForm1.TabIndex = 2;
             // 
             // CashierMainForm
             // 

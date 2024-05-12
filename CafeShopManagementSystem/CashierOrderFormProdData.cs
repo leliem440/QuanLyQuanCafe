@@ -18,7 +18,7 @@ namespace CafeShopManagementSystem
         public string Stock { get; set; }
         public string Price { get; set; }
         public string Status { get; set; }
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True");
+        SqlConnection connect = new SqlConnection(Form1.conn);
         public List<CashierOrderFormProdData> availableProductsData()
         {
             List<CashierOrderFormProdData> listData = new List<CashierOrderFormProdData>();

@@ -13,7 +13,7 @@ namespace CafeShopManagementSystem
 {
     public partial class RegisterForm : Form
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True");
+        SqlConnection connect = new SqlConnection(Form1.conn);
         public RegisterForm()
         {
             InitializeComponent();

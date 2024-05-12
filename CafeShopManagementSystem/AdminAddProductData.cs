@@ -10,6 +10,7 @@ namespace CafeShopManagementSystem
 {
     internal class AdminAddProductData
     {
+         
         public int ID { get; set; }
         public string ProductID { get; set; }
         public string ProductName { get; set; }
@@ -20,9 +21,9 @@ namespace CafeShopManagementSystem
         public string Image { get; set; }
         public string DateInsert { get; set; }
         public string DateUpdate { get; set; }
-        public string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True";
+        
 
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True");
+        SqlConnection connect = new SqlConnection(Form1.conn);
 
         public List<AdminAddProductData> productsListData()
         {
