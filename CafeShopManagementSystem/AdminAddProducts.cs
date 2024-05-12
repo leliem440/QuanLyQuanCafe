@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Drawing.Imaging;
 using System.IO;
 
+
 namespace CafeShopManagementSystem
 {
     public partial class AdminAddProducts : UserControl

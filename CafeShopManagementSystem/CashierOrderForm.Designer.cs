@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cashierOrderForm_menuTable = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,7 +73,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(826, 328);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // cashierOrderForm_menuTable
             // 
@@ -91,12 +90,11 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(13, 18);
+            this.label1.Location = new System.Drawing.Point(21, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 27);
             this.label1.TabIndex = 3;
             this.label1.Text = "Menu";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
@@ -118,7 +116,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(826, 351);
             this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // cashierOrderForm_clearBtn
             // 
@@ -158,6 +155,7 @@
             this.cashierOrderForm_addBtn.TabIndex = 22;
             this.cashierOrderForm_addBtn.Text = "ADD";
             this.cashierOrderForm_addBtn.UseVisualStyleBackColor = false;
+            this.cashierOrderForm_addBtn.Click += new System.EventHandler(this.cashierOrderForm_addBtn_Click);
             // 
             // cashierOrderForm_price
             // 
@@ -202,7 +200,6 @@
             this.label4.Size = new System.Drawing.Size(66, 15);
             this.label4.TabIndex = 18;
             this.label4.Text = "Quantity:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // cashierOrderForm_quantity
             // 
@@ -211,7 +208,6 @@
             this.cashierOrderForm_quantity.Name = "cashierOrderForm_quantity";
             this.cashierOrderForm_quantity.Size = new System.Drawing.Size(205, 34);
             this.cashierOrderForm_quantity.TabIndex = 17;
-            this.cashierOrderForm_quantity.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label3
             // 
@@ -223,7 +219,6 @@
             this.label3.Size = new System.Drawing.Size(104, 15);
             this.label3.TabIndex = 16;
             this.label3.Text = "Product Name:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // cashierOrderForm_productID
             // 
@@ -245,7 +240,6 @@
             this.label2.Size = new System.Drawing.Size(80, 15);
             this.label2.TabIndex = 14;
             this.label2.Text = "Product ID:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // cashierOrderForm_type
             // 
@@ -270,7 +264,6 @@
             this.label5.Size = new System.Drawing.Size(42, 15);
             this.label5.TabIndex = 12;
             this.label5.Text = "Type:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // panel3
             // 
@@ -288,7 +281,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(351, 685);
             this.panel3.TabIndex = 1;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // cashierOrderForm_receiptBtn
             // 
@@ -377,8 +369,8 @@
             this.cashierOrderForm_orderTable.Margin = new System.Windows.Forms.Padding(4);
             this.cashierOrderForm_orderTable.Name = "cashierOrderForm_orderTable";
             this.cashierOrderForm_orderTable.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.cashierOrderForm_orderTable.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.cashierOrderForm_orderTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.cashierOrderForm_orderTable.Size = new System.Drawing.Size(318, 319);
             this.cashierOrderForm_orderTable.TabIndex = 4;
             // 

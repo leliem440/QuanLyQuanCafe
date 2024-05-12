@@ -29,60 +29,42 @@ namespace CafeShopManagementSystem
 
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void label4_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void cashierOrderForm_addBtn_Click(object sender, EventArgs e)
         {
-
+            IDGenerator();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private int idGen = 0;
+        public void IDGenerator()
         {
+            using (SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True"))
+            {
+                connect.Open();
+                string selectID = "SELECT id , MAX(customer_id) FROM orders";
+                using (SqlCommand cmd = new SqlCommand(selectID, connect))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        int temp = (int)reader["MAX(customer_id)"];
+                        if(temp == 0)
+                        {
+                            idGen += 1;
+                        }
+                        else if(temp == idGen)
+                        {
+                            idGen = temp + 1;
+                        }
+                    }
 
+                }
+            }
         }
+
 
         private void cashierOrderForm_type_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -132,26 +114,37 @@ namespace CafeShopManagementSystem
             string selectedValue = cashierOrderForm_productID.SelectedItem as string;
             if(selectedValue != null)
             {
-                using (SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True"))
+                try
                 {
-                    connect.Open();
-                    string selectData = $"SELECT * FROM products WHERE prod_id = '{selectedValue}' AND prod_status = @status AND date_delete IS NULL";
-                    using (SqlCommand cmd = new SqlCommand(selectData, connect))
+                    using (SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\cafe.mdf;Integrated Security=True"))
                     {
-                        cmd.Parameters.AddWithValue("@status", "Available");
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        connect.Open();
+                        string selectData = $"SELECT * FROM products WHERE prod_id = '{selectedValue}' AND prod_status = @status AND date_delete IS NULL";
+                        using (SqlCommand cmd = new SqlCommand(selectData, connect))
                         {
-                            while (reader.Read())
+                            cmd.Parameters.AddWithValue("@status", "Available");
+                            using (SqlDataReader reader = cmd.ExecuteReader())
                             {
-                                string prodName = reader["prod_name"].ToString();
-                                string prodPrice = reader["prod_price"].ToString();
-                                cashierOrderForm_prodName.Text = prodName;
-                                cashierOrderForm_price.Text = prodPrice;
+                                while (reader.Read())
+                                {
+                                    string prodName = reader["prod_name"].ToString();
+                                    string prodPrice = reader["prod_price"].ToString();
+                                    cashierOrderForm_prodName.Text = prodName;
+                                    cashierOrderForm_price.Text = prodPrice;
+                                }
                             }
                         }
                     }
                 }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
         }
+
+       
+
     }
 }

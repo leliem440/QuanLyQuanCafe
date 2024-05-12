@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -65,7 +65,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1212, 395);
             this.panel1.TabIndex = 0;
@@ -87,11 +87,11 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(21, 74);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Size = new System.Drawing.Size(1176, 305);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
@@ -118,7 +118,7 @@
             this.panel2.Controls.Add(this.adminAddProducts_id);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(4, 406);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1212, 316);
             this.panel2.TabIndex = 1;
@@ -185,7 +185,7 @@
             this.adminAddProducts_importBtn.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminAddProducts_importBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.adminAddProducts_importBtn.Location = new System.Drawing.Point(1038, 228);
-            this.adminAddProducts_importBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.adminAddProducts_importBtn.Margin = new System.Windows.Forms.Padding(4);
             this.adminAddProducts_importBtn.Name = "adminAddProducts_importBtn";
             this.adminAddProducts_importBtn.Size = new System.Drawing.Size(109, 58);
             this.adminAddProducts_importBtn.TabIndex = 20;
@@ -198,7 +198,7 @@
             this.panel3.BackColor = System.Drawing.Color.DarkGray;
             this.panel3.Controls.Add(this.adminAddProducts_imageView);
             this.panel3.Location = new System.Drawing.Point(1012, 52);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(157, 145);
             this.panel3.TabIndex = 19;
@@ -206,7 +206,7 @@
             // adminAddProducts_imageView
             // 
             this.adminAddProducts_imageView.Location = new System.Drawing.Point(13, 15);
-            this.adminAddProducts_imageView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.adminAddProducts_imageView.Margin = new System.Windows.Forms.Padding(4);
             this.adminAddProducts_imageView.Name = "adminAddProducts_imageView";
             this.adminAddProducts_imageView.Size = new System.Drawing.Size(133, 127);
             this.adminAddProducts_imageView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -270,7 +270,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(552, 56);
+            this.label7.Location = new System.Drawing.Point(546, 56);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 20);
             this.label7.TabIndex = 13;
@@ -345,7 +345,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminAddProducts";
             this.Size = new System.Drawing.Size(1228, 732);
             this.Load += new System.EventHandler(this.AdminAddProducts_Load);
