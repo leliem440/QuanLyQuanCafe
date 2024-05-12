@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Data;
+using System.Drawing.Printing;
 
 namespace CafeShopManagementSystem
 {
@@ -335,6 +335,88 @@ namespace CafeShopManagementSystem
 
                 }
             }
+            displaytotalPrice();
+        }
+
+        private int rowIndex = 0;
+        private void cashierOrderForm_receiptBtn_Click(object sender, EventArgs e)
+        {
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+            printDocument1.BeginPrint += new PrintEventHandler(printDocument1_BeginPrint);
+
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void printDocument1_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            rowIndex = 0;
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            displaytotalPrice();
+            float y = 0;
+            int count = 0;
+            int colWidth = 120;
+            int headerMargin = 120;
+            int tableMargin = 20;
+
+            Font font = new Font("Arial", 12);
+            Font bold = new Font("Arial", 12, FontStyle.Bold);
+            Font headerFont = new Font("Arial", 16, FontStyle.Bold);
+            Font labelFont = new Font("Arial", 14, FontStyle.Bold);
+
+            float margin = e.MarginBounds.Top;
+
+            StringFormat alignCenter = new StringFormat();
+            alignCenter.Alignment = StringAlignment.Center;
+            alignCenter.LineAlignment = StringAlignment.Center;
+
+            string headerText = "TLT Cafe";
+            y = (margin + count * headerFont.GetHeight(e.Graphics)) + headerMargin;
+            e.Graphics.DrawString(headerText, headerFont, Brushes.Black, e.MarginBounds.Left 
+                + (cashierOrderForm_orderTable.Columns.Count /2) * colWidth, y, alignCenter);
+
+            count++;
+            y += tableMargin;
+            string[] header = {"CID", "ProdID", "ProdName", "ProdType", "Qty", "Price"};
+            for(int i =0; i < header.Length; i++)
+            {
+                y = margin + count * bold.GetHeight(e.Graphics) + tableMargin;
+                e.Graphics.DrawString(header[i], bold, Brushes.Black, e.MarginBounds.Left + i * colWidth, y, alignCenter);
+            }
+            count ++;
+            float rSpace = e.MarginBounds.Bottom - y;
+            while (rowIndex < cashierOrderForm_orderTable.Rows.Count)
+            {
+                DataGridViewRow row = cashierOrderForm_orderTable.Rows[rowIndex];
+                for(int i = 0; i < cashierOrderForm_orderTable.Columns.Count; i++)
+                {
+                    object cellValue = row.Cells[i].Value;
+                    string cell = (cellValue != null) ? cellValue.ToString() : string.Empty;
+
+                    y = margin + count * font.GetHeight(e.Graphics) + tableMargin;
+                    e.Graphics.DrawString(cell, font, Brushes.Black, e.MarginBounds.Left + i*colWidth, y, alignCenter);
+                }
+                count++;
+                rowIndex++;
+                if(y + font.GetHeight(e.Graphics) > e.MarginBounds.Bottom)
+                {
+                    e.HasMorePages = true;
+                    return;
+                }
+            }
+            int labelMargin = (int)Math.Min(rSpace, 90);
+            DateTime today = DateTime.Now;
+            float labelX = e.MarginBounds.Right - e.Graphics.MeasureString("----------------------", labelFont).Width;
+            e.Graphics.DrawString("Price: $" + totalPrice + "\n------------------\nAmount: $" 
+                + cashierOrderForm_amount.Text + "\nChange: $" + cashierOrderForm_change.Text, labelFont, Brushes.Black, labelX, y);
+            labelMargin = (int)Math.Min(rSpace, -40);
+            string labelText = today.ToString();
+            y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
+            e.Graphics.DrawString(labelText, labelFont
+                , Brushes.Black, e.MarginBounds.Right - e.Graphics.MeasureString("-------------------------", labelFont).Width, y);
         }
     }
 }
