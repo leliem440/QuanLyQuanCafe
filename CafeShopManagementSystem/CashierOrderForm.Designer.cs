@@ -327,6 +327,7 @@
             this.cashierOrderForm_payBtn.TabIndex = 25;
             this.cashierOrderForm_payBtn.Text = "PAY";
             this.cashierOrderForm_payBtn.UseVisualStyleBackColor = false;
+            this.cashierOrderForm_payBtn.Click += new System.EventHandler(this.cashierOrderForm_payBtn_Click);
             // 
             // cashierOrderForm_change
             // 
@@ -347,6 +348,8 @@
             this.cashierOrderForm_amount.Name = "cashierOrderForm_amount";
             this.cashierOrderForm_amount.Size = new System.Drawing.Size(113, 27);
             this.cashierOrderForm_amount.TabIndex = 28;
+            this.cashierOrderForm_amount.TextChanged += new System.EventHandler(this.cashierOrderForm_amount_TextChanged);
+            this.cashierOrderForm_amount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cashierOrderForm_amount_KeyDown);
             // 
             // label13
             // 

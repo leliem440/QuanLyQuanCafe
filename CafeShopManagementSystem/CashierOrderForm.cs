@@ -22,6 +22,7 @@ namespace CafeShopManagementSystem
             InitializeComponent();
             displayAvailableProds();
             displayAllOrders();
+            displaytotalPrice();
         }
 
         public void displayAvailableProds()
@@ -42,6 +43,40 @@ namespace CafeShopManagementSystem
             CashierOrdersData allOrders = new CashierOrdersData();
             List<CashierOrdersData> listData = allOrders.ordersListData();
             cashierOrderForm_orderTable.DataSource = listData;
+        }
+
+        private float totalPrice;
+        public void displaytotalPrice()
+        {
+            IDGenerator();
+            if(connect.State == ConnectionState.Closed) 
+            {
+                try
+                {
+                    connect.Open();
+
+                    string selectData = "SELECT SUM(prod_price) FROM orders WHERE customer_id = @custId";
+                    using(SqlCommand cmd = new SqlCommand(selectData, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@custId", idGen);
+
+                       object result = cmd.ExecuteScalar();
+
+                       totalPrice = Convert.ToSingle(result);
+
+                       cashierOrderForm_orderPrice.Text = totalPrice.ToString();
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Connection failed: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connect.Close();
+                }
+            }
         }
 
         private void cashierOrderForm_addBtn_Click(object sender, EventArgs e)
@@ -91,6 +126,8 @@ namespace CafeShopManagementSystem
                             cmd.Parameters.AddWithValue("@prodPrice", totalPrice);
                             cmd.Parameters.AddWithValue("@orderDate",today);
                             cmd.ExecuteNonQuery();
+                            displaytotalPrice();
+                            displayAllOrders();
                         }
                     }
                     catch (Exception ex)
@@ -218,7 +255,86 @@ namespace CafeShopManagementSystem
             }
         }
 
-       
+        private void cashierOrderForm_amount_TextChanged(object sender, EventArgs e)
+        {
+            
+            
+        }
 
+        private void cashierOrderForm_amount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    float getAmount = Convert.ToSingle(cashierOrderForm_amount.Text);
+
+                    float getChange = (getAmount - totalPrice);
+
+                    if (getChange <= -1)
+                    {
+                        cashierOrderForm_amount.Text = "";
+                        cashierOrderForm_change.Text = "";
+                    }
+                    else
+                    {
+                        cashierOrderForm_change.Text = getChange.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Invalid", "Error Message",  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cashierOrderForm_amount.Text = "";
+                    cashierOrderForm_change.Text = "";
+                }
+            }
+        }
+
+        private void cashierOrderForm_payBtn_Click(object sender, EventArgs e)
+        {
+            if (cashierOrderForm_amount.Text == "" || cashierOrderForm_orderTable.Rows.Count < 0) 
+            {
+                MessageBox.Show("Something went wrong." , "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if(MessageBox.Show("Are you sure for paying?", "Confirmation Message"
+                    , MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if(connect.State == ConnectionState.Closed) 
+                    {
+                        try
+                        {
+                            connect.Open();
+                            IDGenerator();
+                            displaytotalPrice();
+                            string insertData = "INSERT INTO customers (customer_id, total_price, amount, change, date)" + 
+                                "VALUES(@custID, @totalPrice, @amount, @change , @date)";
+                            DateTime today = DateTime.Today;
+                            using(SqlCommand cmd = new SqlCommand(insertData, connect))
+                            {
+                                cmd.Parameters.AddWithValue("@custID", idGen);
+                                cmd.Parameters.AddWithValue("@totalPrice", totalPrice);
+                                cmd.Parameters.AddWithValue("@amount", cashierOrderForm_amount.Text);
+                                cmd.Parameters.AddWithValue("@change", cashierOrderForm_change.Text);
+                                cmd.Parameters.AddWithValue("@date", today);
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Paid successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Connection failed" + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            connect.Close();
+                        }
+                    }
+
+                }
+            }
+        }
     }
 }
