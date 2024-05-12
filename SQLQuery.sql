@@ -42,6 +42,9 @@ CREATE TABLE orders
 	
 )
 
+ALTER TABLE orders
+ADD qty INT NULL
+
 SELECT * FROM orders
 
 CREATE TABLE customers
