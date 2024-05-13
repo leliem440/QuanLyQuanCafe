@@ -24,6 +24,16 @@ namespace CafeShopManagementSystem
             displayData();
         }
 
+        public void refreshData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)refreshData);
+                return;
+            }
+            displayData();
+        }
+
         public bool emptyFields()
         {
             if (adminAddProducts_id.Text == "" || adminAddProducts_name.Text == ""

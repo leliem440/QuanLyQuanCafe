@@ -25,6 +25,17 @@ namespace CafeShopManagementSystem
             displaytotalPrice();
         }
 
+        public void refreshData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)refreshData);
+                return;
+            }
+            displayAvailableProds();
+            displayAllOrders();
+            displaytotalPrice();
+        }
         public void displayAvailableProds()
         {
             CashierOrderFormProdData allProds = new CashierOrderFormProdData();
@@ -49,7 +60,7 @@ namespace CafeShopManagementSystem
         public void displaytotalPrice()
         {
             IDGenerator();
-            if(connect.State == ConnectionState.Closed) 
+            if (connect.State == ConnectionState.Closed) 
             {
                 try
                 {
@@ -62,9 +73,17 @@ namespace CafeShopManagementSystem
 
                        object result = cmd.ExecuteScalar();
 
-                       totalPrice = Convert.ToSingle(result);
 
-                       cashierOrderForm_orderPrice.Text = totalPrice.ToString();
+                        if (result != DBNull.Value)
+                        {
+                            totalPrice = Convert.ToSingle(result);
+
+                            cashierOrderForm_orderPrice.Text = totalPrice.ToString("0.00");
+                        }
+                        else
+                        {
+                            
+                        }
 
                     }
                 }
@@ -114,19 +133,23 @@ namespace CafeShopManagementSystem
                         }
                             string insertOder = "INSERT INTO orders (customer_id , prod_id , prod_name , prod_type , qty , prod_price , order_date)" +
                                 "VALUES(@customerID , @prodID , @prodName , @prodType , @qty , @prodPrice , @orderDate)";
+
                         DateTime today = DateTime.Today;
+
                         using (SqlCommand cmd = new SqlCommand(insertOder,connect))
                         {
                             cmd.Parameters.AddWithValue("@customerID", idGen);
                             cmd.Parameters.AddWithValue("@prodID", cashierOrderForm_productID.Text.Trim());
                             cmd.Parameters.AddWithValue("@prodName", cashierOrderForm_prodName.Text);
                             cmd.Parameters.AddWithValue("@prodType", cashierOrderForm_type.Text.Trim());
-                            float totalPrice = getPrice * ((int)cashierOrderForm_quantity.Value);
+
+                            float totalPrice = (getPrice * (int)cashierOrderForm_quantity.Value);
+                            
                             cmd.Parameters.AddWithValue("@qty", cashierOrderForm_quantity.Value);
                             cmd.Parameters.AddWithValue("@prodPrice", totalPrice);
                             cmd.Parameters.AddWithValue("@orderDate",today);
                             cmd.ExecuteNonQuery();
-                            displaytotalPrice();
+                            
                             displayAllOrders();
                         }
                     }
@@ -140,7 +163,7 @@ namespace CafeShopManagementSystem
                     }
                 }
             }
-            
+            displaytotalPrice();
         }
 
         private int idGen = 0;
@@ -306,19 +329,24 @@ namespace CafeShopManagementSystem
                         try
                         {
                             connect.Open();
+
                             IDGenerator();
-                            displaytotalPrice();
+                            
                             string insertData = "INSERT INTO customers (customer_id, total_price, amount, change, date)" + 
-                                "VALUES(@custID, @totalPrice, @amount, @change , @date)";
+                                "VALUES(@custID, @totalprice, @amount, @change , @date)";
+
                             DateTime today = DateTime.Today;
+
                             using(SqlCommand cmd = new SqlCommand(insertData, connect))
                             {
                                 cmd.Parameters.AddWithValue("@custID", idGen);
-                                cmd.Parameters.AddWithValue("@totalPrice", totalPrice);
+                                cmd.Parameters.AddWithValue("@totalprice", totalPrice);
                                 cmd.Parameters.AddWithValue("@amount", cashierOrderForm_amount.Text);
                                 cmd.Parameters.AddWithValue("@change", cashierOrderForm_change.Text);
                                 cmd.Parameters.AddWithValue("@date", today);
+
                                 cmd.ExecuteNonQuery();
+
                                 MessageBox.Show("Paid successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             }
@@ -359,7 +387,7 @@ namespace CafeShopManagementSystem
             float y = 0;
             int count = 0;
             int colWidth = 120;
-            int headerMargin = 120;
+            int headerMargin = 10;
             int tableMargin = 20;
 
             Font font = new Font("Arial", 12);
@@ -407,9 +435,11 @@ namespace CafeShopManagementSystem
                     return;
                 }
             }
-            int labelMargin = (int)Math.Min(rSpace, 200);
+            int labelMargin = (int)Math.Min(rSpace, 90 );
             DateTime today = DateTime.Now;
+
             float labelX = e.MarginBounds.Right - e.Graphics.MeasureString("----------------------", labelFont).Width;
+
             y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
             e.Graphics.DrawString("Total Price: \t$" + totalPrice + "\nAmount: \t$"
                 + cashierOrderForm_amount.Text + "\n--------\nChange: \t$" + cashierOrderForm_change.Text, labelFont, Brushes.Black, labelX, y);
@@ -420,6 +450,16 @@ namespace CafeShopManagementSystem
             y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
             e.Graphics.DrawString(labelText, labelFont
                 , Brushes.Black, e.MarginBounds.Right - e.Graphics.MeasureString("----------------------", labelFont).Width, y);
+        }
+
+        private void cashierOrderForm_removeBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cashierOrderForm_orderTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

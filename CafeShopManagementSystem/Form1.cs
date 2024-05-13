@@ -14,7 +14,7 @@ namespace CafeShopManagementSystem
     public partial class Form1 : Form
 
     {
-        public static string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Administrator\Downloads\QuanLyQuanCafe-master (1)\QuanLyQuanCafe-master\cafe.mdf"";Integrated Security=True;";
+        public static string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\QuanLyQuanCafe-master\QuanLyQuanCafe-master\cafe.mdf;Integrated Security=True";
         SqlConnection connect = new  SqlConnection(conn);
 
         public Form1()

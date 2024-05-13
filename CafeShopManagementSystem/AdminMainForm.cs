@@ -63,6 +63,14 @@ namespace CafeShopManagementSystem
             aminDashboardForm2.Visible = true;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = false;
+            cashierCustomersForm1.Visible = false;
+
+            AminDashboardForm adFrom = aminDashboardForm2 as AminDashboardForm;
+            if (adFrom != null)
+            {
+                adFrom.refreshData();
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -70,6 +78,13 @@ namespace CafeShopManagementSystem
             aminDashboardForm2.Visible = false;
             adminAddUsers1.Visible = true;
             adminAddProducts1.Visible = false;
+            cashierCustomersForm1.Visible = false;
+
+            AdminAddUsers aausers = adminAddUsers1 as AdminAddUsers;
+            if (aausers != null)
+            {
+                aausers.refreshData();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -77,6 +92,28 @@ namespace CafeShopManagementSystem
             aminDashboardForm2.Visible = false;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = true;
+            cashierCustomersForm1.Visible = false;
+
+            AdminAddProducts aaProd = adminAddProducts1 as AdminAddProducts;
+
+            if (aaProd != null)
+            {
+                aaProd.refreshData();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            aminDashboardForm2.Visible = false;
+            adminAddUsers1.Visible = false;
+            adminAddProducts1.Visible = false;
+            cashierCustomersForm1.Visible = true;
+
+            CashierCustomersForm ccFrom = cashierCustomersForm1 as CashierCustomersForm;
+            if (ccFrom != null)
+            {
+                ccFrom.refreshData();
+            }
         }
     }
 }

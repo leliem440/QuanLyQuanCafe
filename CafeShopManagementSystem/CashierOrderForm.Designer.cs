@@ -73,7 +73,7 @@
             this.panel1.Controls.Add(this.cashierOrderForm_menuTable);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(26, 18);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(620, 266);
             this.panel1.TabIndex = 0;
@@ -91,7 +91,7 @@
             this.cashierOrderForm_menuTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.cashierOrderForm_menuTable.ColumnHeadersHeight = 29;
             this.cashierOrderForm_menuTable.Location = new System.Drawing.Point(14, 49);
-            this.cashierOrderForm_menuTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cashierOrderForm_menuTable.Margin = new System.Windows.Forms.Padding(2);
             this.cashierOrderForm_menuTable.Name = "cashierOrderForm_menuTable";
             this.cashierOrderForm_menuTable.RowHeadersWidth = 4;
             this.cashierOrderForm_menuTable.RowTemplate.Height = 24;
@@ -128,7 +128,7 @@
             this.panel2.Controls.Add(this.cashierOrderForm_type);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(26, 289);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(620, 285);
             this.panel2.TabIndex = 1;
@@ -139,7 +139,7 @@
             this.cashierOrderForm_clearBtn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cashierOrderForm_clearBtn.ForeColor = System.Drawing.Color.White;
             this.cashierOrderForm_clearBtn.Location = new System.Drawing.Point(446, 210);
-            this.cashierOrderForm_clearBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cashierOrderForm_clearBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cashierOrderForm_clearBtn.Name = "cashierOrderForm_clearBtn";
             this.cashierOrderForm_clearBtn.Size = new System.Drawing.Size(142, 42);
             this.cashierOrderForm_clearBtn.TabIndex = 24;
@@ -152,12 +152,13 @@
             this.cashierOrderForm_removeBtn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cashierOrderForm_removeBtn.ForeColor = System.Drawing.Color.White;
             this.cashierOrderForm_removeBtn.Location = new System.Drawing.Point(241, 210);
-            this.cashierOrderForm_removeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cashierOrderForm_removeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cashierOrderForm_removeBtn.Name = "cashierOrderForm_removeBtn";
             this.cashierOrderForm_removeBtn.Size = new System.Drawing.Size(142, 42);
             this.cashierOrderForm_removeBtn.TabIndex = 23;
             this.cashierOrderForm_removeBtn.Text = "REMOVE";
             this.cashierOrderForm_removeBtn.UseVisualStyleBackColor = false;
+            this.cashierOrderForm_removeBtn.Click += new System.EventHandler(this.cashierOrderForm_removeBtn_Click);
             // 
             // cashierOrderForm_addBtn
             // 
@@ -165,7 +166,7 @@
             this.cashierOrderForm_addBtn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cashierOrderForm_addBtn.ForeColor = System.Drawing.Color.White;
             this.cashierOrderForm_addBtn.Location = new System.Drawing.Point(26, 210);
-            this.cashierOrderForm_addBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cashierOrderForm_addBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cashierOrderForm_addBtn.Name = "cashierOrderForm_addBtn";
             this.cashierOrderForm_addBtn.Size = new System.Drawing.Size(142, 42);
             this.cashierOrderForm_addBtn.TabIndex = 22;
@@ -181,9 +182,8 @@
             this.cashierOrderForm_price.Location = new System.Drawing.Point(109, 122);
             this.cashierOrderForm_price.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.cashierOrderForm_price.Name = "cashierOrderForm_price";
-            this.cashierOrderForm_price.Size = new System.Drawing.Size(26, 12);
+            this.cashierOrderForm_price.Size = new System.Drawing.Size(0, 12);
             this.cashierOrderForm_price.TabIndex = 21;
-            this.cashierOrderForm_price.Text = "100";
             // 
             // label8
             // 
@@ -205,9 +205,8 @@
             this.cashierOrderForm_prodName.Location = new System.Drawing.Point(109, 72);
             this.cashierOrderForm_prodName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.cashierOrderForm_prodName.Name = "cashierOrderForm_prodName";
-            this.cashierOrderForm_prodName.Size = new System.Drawing.Size(76, 12);
+            this.cashierOrderForm_prodName.Size = new System.Drawing.Size(0, 12);
             this.cashierOrderForm_prodName.TabIndex = 19;
-            this.cashierOrderForm_prodName.Text = "Test Product";
             // 
             // label4
             // 
@@ -225,7 +224,7 @@
             // 
             this.cashierOrderForm_quantity.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cashierOrderForm_quantity.Location = new System.Drawing.Point(407, 63);
-            this.cashierOrderForm_quantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cashierOrderForm_quantity.Margin = new System.Windows.Forms.Padding(2);
             this.cashierOrderForm_quantity.Name = "cashierOrderForm_quantity";
             this.cashierOrderForm_quantity.Size = new System.Drawing.Size(154, 29);
             this.cashierOrderForm_quantity.TabIndex = 17;
@@ -246,7 +245,7 @@
             // 
             this.cashierOrderForm_productID.FormattingEnabled = true;
             this.cashierOrderForm_productID.Location = new System.Drawing.Point(407, 23);
-            this.cashierOrderForm_productID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cashierOrderForm_productID.Margin = new System.Windows.Forms.Padding(2);
             this.cashierOrderForm_productID.Name = "cashierOrderForm_productID";
             this.cashierOrderForm_productID.Size = new System.Drawing.Size(155, 21);
             this.cashierOrderForm_productID.TabIndex = 15;
@@ -271,7 +270,7 @@
             "Meal",
             "Drinks"});
             this.cashierOrderForm_type.Location = new System.Drawing.Point(100, 23);
-            this.cashierOrderForm_type.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cashierOrderForm_type.Margin = new System.Windows.Forms.Padding(2);
             this.cashierOrderForm_type.Name = "cashierOrderForm_type";
             this.cashierOrderForm_type.Size = new System.Drawing.Size(155, 21);
             this.cashierOrderForm_type.TabIndex = 13;
@@ -302,7 +301,7 @@
             this.panel3.Controls.Add(this.cashierOrderForm_orderPrice);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Location = new System.Drawing.Point(650, 18);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(263, 557);
             this.panel3.TabIndex = 1;
@@ -312,12 +311,13 @@
             this.cashierOrderForm_orderTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.cashierOrderForm_orderTable.ColumnHeadersHeight = 29;
             this.cashierOrderForm_orderTable.Location = new System.Drawing.Point(12, 13);
-            this.cashierOrderForm_orderTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cashierOrderForm_orderTable.Margin = new System.Windows.Forms.Padding(2);
             this.cashierOrderForm_orderTable.Name = "cashierOrderForm_orderTable";
             this.cashierOrderForm_orderTable.RowHeadersWidth = 4;
             this.cashierOrderForm_orderTable.RowTemplate.Height = 24;
             this.cashierOrderForm_orderTable.Size = new System.Drawing.Size(238, 280);
             this.cashierOrderForm_orderTable.TabIndex = 30;
+            this.cashierOrderForm_orderTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cashierOrderForm_orderTable_CellContentClick);
             // 
             // cashierOrderForm_receiptBtn
             // 
@@ -325,7 +325,7 @@
             this.cashierOrderForm_receiptBtn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cashierOrderForm_receiptBtn.ForeColor = System.Drawing.Color.White;
             this.cashierOrderForm_receiptBtn.Location = new System.Drawing.Point(12, 496);
-            this.cashierOrderForm_receiptBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cashierOrderForm_receiptBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cashierOrderForm_receiptBtn.Name = "cashierOrderForm_receiptBtn";
             this.cashierOrderForm_receiptBtn.Size = new System.Drawing.Size(238, 42);
             this.cashierOrderForm_receiptBtn.TabIndex = 29;
@@ -339,7 +339,7 @@
             this.cashierOrderForm_payBtn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cashierOrderForm_payBtn.ForeColor = System.Drawing.Color.White;
             this.cashierOrderForm_payBtn.Location = new System.Drawing.Point(12, 439);
-            this.cashierOrderForm_payBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cashierOrderForm_payBtn.Margin = new System.Windows.Forms.Padding(2);
             this.cashierOrderForm_payBtn.Name = "cashierOrderForm_payBtn";
             this.cashierOrderForm_payBtn.Size = new System.Drawing.Size(238, 42);
             this.cashierOrderForm_payBtn.TabIndex = 25;
@@ -363,7 +363,7 @@
             // 
             this.cashierOrderForm_amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cashierOrderForm_amount.Location = new System.Drawing.Point(141, 349);
-            this.cashierOrderForm_amount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cashierOrderForm_amount.Margin = new System.Windows.Forms.Padding(2);
             this.cashierOrderForm_amount.Name = "cashierOrderForm_amount";
             this.cashierOrderForm_amount.Size = new System.Drawing.Size(86, 23);
             this.cashierOrderForm_amount.TabIndex = 28;
@@ -402,9 +402,9 @@
             this.cashierOrderForm_orderPrice.Location = new System.Drawing.Point(139, 315);
             this.cashierOrderForm_orderPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.cashierOrderForm_orderPrice.Name = "cashierOrderForm_orderPrice";
-            this.cashierOrderForm_orderPrice.Size = new System.Drawing.Size(26, 12);
+            this.cashierOrderForm_orderPrice.Size = new System.Drawing.Size(12, 12);
             this.cashierOrderForm_orderPrice.TabIndex = 26;
-            this.cashierOrderForm_orderPrice.Text = "100";
+            this.cashierOrderForm_orderPrice.Text = "0";
             // 
             // label10
             // 
@@ -440,7 +440,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CashierOrderForm";
             this.Size = new System.Drawing.Size(919, 581);
             this.panel1.ResumeLayout(false);
