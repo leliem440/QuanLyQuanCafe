@@ -407,16 +407,19 @@ namespace CafeShopManagementSystem
                     return;
                 }
             }
-            int labelMargin = (int)Math.Min(rSpace, 90);
+            int labelMargin = (int)Math.Min(rSpace, 200);
             DateTime today = DateTime.Now;
             float labelX = e.MarginBounds.Right - e.Graphics.MeasureString("----------------------", labelFont).Width;
-            e.Graphics.DrawString("Price: $" + totalPrice + "\n------------------\nAmount: $" 
-                + cashierOrderForm_amount.Text + "\nChange: $" + cashierOrderForm_change.Text, labelFont, Brushes.Black, labelX, y);
+            y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
+            e.Graphics.DrawString("Total Price: \t$" + totalPrice + "\nAmount: \t$"
+                + cashierOrderForm_amount.Text + "\n--------\nChange: \t$" + cashierOrderForm_change.Text, labelFont, Brushes.Black, labelX, y);
+
             labelMargin = (int)Math.Min(rSpace, -40);
+
             string labelText = today.ToString();
             y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
             e.Graphics.DrawString(labelText, labelFont
-                , Brushes.Black, e.MarginBounds.Right - e.Graphics.MeasureString("-------------------------", labelFont).Width, y);
+                , Brushes.Black, e.MarginBounds.Right - e.Graphics.MeasureString("----------------------", labelFont).Width, y);
         }
     }
 }
